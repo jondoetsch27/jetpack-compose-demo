@@ -28,7 +28,7 @@ data class Message(val author: String, val body: String)
 
 @Composable
 fun MessageCard(message: Message) {
-    Column() {
+    Column {
         Text(text = message.author)
         Text(text = message.body)
     }
