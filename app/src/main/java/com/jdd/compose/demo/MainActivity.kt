@@ -3,6 +3,7 @@ package com.jdd.compose.demo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -15,24 +16,28 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposeDemoTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    MessageCard(message = Message(author = "Jetpack", body = "Compose"))
                 }
             }
         }
     }
 }
 
+data class Message(val author: String, val body: String)
+
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MessageCard(message: Message) {
+    Column() {
+        Text(text = message.author)
+        Text(text = message.body)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     JetpackComposeDemoTheme {
-        Greeting("Android")
+        MessageCard(message = Message(author = "Android", body = "Jetpack Compose"))
     }
 }
