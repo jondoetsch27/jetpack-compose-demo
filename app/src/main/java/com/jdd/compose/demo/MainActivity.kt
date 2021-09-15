@@ -3,11 +3,14 @@ package com.jdd.compose.demo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.jdd.compose.demo.ui.theme.JetpackComposeDemoTheme
 
@@ -17,20 +20,38 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeDemoTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    MessageCard(message = Message(author = "Jetpack", body = "Compose"))
+                    //MessageCard(message = Message(author = "Jetpack", body = "Compose"))
+                    PlayerCard(
+                        playerMessage = PlayerMessage(
+                            playerFirstName = "Trevor",
+                            playerLastName = "Lawrence",
+                            playerNumber = "16"
+                        )
+                    )
                 }
             }
         }
     }
 }
 
-data class Message(val author: String, val body: String)
+data class PlayerMessage(
+    val playerFirstName: String,
+    val playerLastName: String,
+    val playerNumber: String
+)
 
 @Composable
-fun MessageCard(message: Message) {
-    Column {
-        Text(text = message.author)
-        Text(text = message.body)
+fun PlayerCard(playerMessage: PlayerMessage) {
+    Row {
+        Image(
+            painter = painterResource(id = R.drawable.trevor_lawrence_profile_picture),
+            contentDescription = "Player Profile Picture"
+        )
+        Column {
+            Text(text = playerMessage.playerFirstName)
+            Text(text = playerMessage.playerLastName)
+            Text(text = playerMessage.playerNumber)
+        }
     }
 }
 
@@ -38,6 +59,12 @@ fun MessageCard(message: Message) {
 @Composable
 fun DefaultPreview() {
     JetpackComposeDemoTheme {
-        MessageCard(message = Message(author = "Android", body = "Jetpack Compose"))
+        PlayerCard(
+            playerMessage = PlayerMessage(
+                playerFirstName = "Trevor",
+                playerLastName = "Lawrence",
+                playerNumber = "16"
+            )
+        )
     }
 }
