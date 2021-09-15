@@ -20,7 +20,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeDemoTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    //MessageCard(message = Message(author = "Jetpack", body = "Compose"))
                     PlayerCard(
                         playerMessage = PlayerMessage(
                             playerFirstName = "Trevor",
