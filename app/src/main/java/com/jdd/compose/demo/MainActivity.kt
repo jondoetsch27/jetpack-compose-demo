@@ -1,5 +1,6 @@
 package com.jdd.compose.demo
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,13 +20,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jdd.compose.demo.ui.theme.JacksonvilleJaguarsTheme
 import com.jdd.compose.demo.ui.theme.JetpackComposeDemoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            JetpackComposeDemoTheme {
+            JacksonvilleJaguarsTheme {
                 Surface(color = MaterialTheme.colors.background) {
                     PlayerCard(
                         playerMessage = PlayerMessage(
@@ -55,33 +57,37 @@ fun PlayerCard(playerMessage: PlayerMessage) {
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape)
-                .border(3.dp, MaterialTheme.colors.secondary, CircleShape)
+                .border(3.dp, MaterialTheme.colors.primary, CircleShape)
         )
         Spacer(modifier = Modifier.width(8.dp))
         Column {
             Text(
                 text = playerMessage.playerFirstName,
-                color = MaterialTheme.colors.secondaryVariant,
+                color = MaterialTheme.colors.primaryVariant,
                 fontSize = 16.sp
             )
             Text(
                 text = playerMessage.playerLastName,
-                color = MaterialTheme.colors.secondaryVariant,
+                color = MaterialTheme.colors.primaryVariant,
                 fontSize = 16.sp
             )
             Text(
                 text = playerMessage.playerNumber,
-                color = MaterialTheme.colors.secondaryVariant,
+                color = MaterialTheme.colors.primaryVariant,
                 fontSize = 16.sp
             )
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 @Composable
 fun DefaultPreview() {
-    JetpackComposeDemoTheme {
+    JacksonvilleJaguarsTheme {
         PlayerCard(
             playerMessage = PlayerMessage(
                 playerFirstName = "Trevor",
