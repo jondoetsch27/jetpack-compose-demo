@@ -16,7 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.jdd.compose.demo.ui.theme.JetpackComposeDemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,13 +55,25 @@ fun PlayerCard(playerMessage: PlayerMessage) {
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape)
-                .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
+                .border(3.dp, MaterialTheme.colors.secondary, CircleShape)
         )
         Spacer(modifier = Modifier.width(8.dp))
         Column {
-            Text(text = playerMessage.playerFirstName, color = MaterialTheme.colors.secondaryVariant)
-            Text(text = playerMessage.playerLastName, color = MaterialTheme.colors.secondaryVariant)
-            Text(text = playerMessage.playerNumber, color = MaterialTheme.colors.secondaryVariant)
+            Text(
+                text = playerMessage.playerFirstName,
+                color = MaterialTheme.colors.secondaryVariant,
+                fontSize = 16.sp
+            )
+            Text(
+                text = playerMessage.playerLastName,
+                color = MaterialTheme.colors.secondaryVariant,
+                fontSize = 16.sp
+            )
+            Text(
+                text = playerMessage.playerNumber,
+                color = MaterialTheme.colors.secondaryVariant,
+                fontSize = 16.sp
+            )
         }
     }
 }
